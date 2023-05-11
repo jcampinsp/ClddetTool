@@ -199,6 +199,7 @@ if [ ${FETCH_INPUT} -eq 1 ]; then
     cp ${exp_namelist_file} ${outdir}/.
   else
     echo "Warning: Found no cloud detection namelist file "${nmlfile}
+    exit
   fi
 
 
