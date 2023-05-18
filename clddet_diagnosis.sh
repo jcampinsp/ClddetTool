@@ -37,7 +37,7 @@ ${bold}OPTIONS${normal}
 
         -d ${unline}an-date${normal}
            Date and time of the analysis 
-           YYYYMMDD_HH 
+           YYYYMMDDHH 
 
         -s ${unline}sensor${normal}
            Name of the infrared sounder of interest
