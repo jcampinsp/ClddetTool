@@ -29,7 +29,7 @@ and two other code files (in src):
 
 ## 3. Usage
 
-The main production script is **clddet_diagnosis.sh**. In the heading of this script, the user will need to specify:
+The main production script is **clddet_diagnosis**. In the heading of this script, the user will need to specify:
 
 1. the input directory (*indir*), which usually is the experiment identification name
 2. the output directory (*outdir*), where large files are stored
@@ -40,9 +40,9 @@ It is assumed that the relevant experiment (input directory) exists.
 
 Once these settings are correctly updated, the tool is run by command
 
-**./clddet_diagnosis.sh -i indir -o outdir -c cycle -s sensor**
+**./clddet_diagnosis -i indir -o outdir -c cycle -s sensor**
 
-Help can be obtained with **./clddet_diagnosis.sh -h**
+Help can be obtained with **./clddet_diagnosis -h**
 
 The script needs some input files, called Fetch input files, taht are necessary to run clddet_analyzer.x:
 
@@ -69,7 +69,7 @@ of the sounder of interest at the appropriate date and time, as far as these dat
 
 Graphical plotting of results can then be done with the command
 
-**./clddet_plotter.sh -j ARG**
+**./clddet_plotter -j ARG**
 
 where ARG is an integer number that represents a running index of an individual infrared satellite sounding. By default, ARG=0, which means
 that the output figure will by representative of average spectrum computed from the input data. The plotting script will save the
