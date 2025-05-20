@@ -21,7 +21,7 @@ def nmax():
     filename="clddet_sorted_smoothed.dat"
     a="cat"; b="|grep observations"; cmd=a+" "+filename+b
     x = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-    print(x.stdout)
+#    print(x.stdout)
     y=x.stdout.split() # list of words of x.stdout
     print(y)
     jmax=y[3]
@@ -32,7 +32,7 @@ def nmax():
 filename="clddet_sorted_smoothed.dat"
 
 if os.path.exists(filename):
-    print('exists')
+    print('clddet_sorted_smoothed.dat file exists')
     a="cat"; b="|grep bt";c="|cut -c3-21"; cmd=a+" "+filename+b+c
     x = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     y=x.stdout.split('\n') #convierte cada linea en un elemento de una lista
@@ -124,6 +124,7 @@ def main(argv) :
     iob = '0' 
   else:
     iob = args.iob
+    print('Profile',iob)
 
 
   jmax = nmax() # def nmax return

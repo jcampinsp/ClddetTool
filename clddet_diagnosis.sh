@@ -165,20 +165,13 @@ echo $srcdir
 echo
 
 if [ ${instrument} = "iasi" ]; then
-  nmlfile="IASI_CLDDET.NL"
   capital="IASI"
 elif [ ${instrument} = "cris" ]; then
-  nmlfile="CRIS_CLDDET.NL"
   capital="CRIS"
 elif [ ${instrument} = "airs" ]; then
-  nmlfile="AIRS_CLDDET.NL"
   capital="AIRS"
 else
   echo "FATAL: Unknown instrument: "${instrument}
-  FETCH_INPUT=0
-  ODB_REQUEST=0
-  RUN_FORTRAN=0
-  CLEAN=0
 fi
 
 
@@ -187,40 +180,9 @@ fi
 #   log file, odb files (ECMA.*).
 #
 
-if [ ${FETCH_INPUT} -eq 1 ]; then
-
-  # Cloud detection tuning parameter values will be read from file
-  # cloud_detect_setup.F90. If this file exists in experiment's work
-  # directory, use this version. Otherwise read it from the HARMONIE
-  # reference code.
-
   echo
   echo Fetching input files ...
   echo
-
-#  exp_src_file=${srcdir}/cloud_detect_setup.F90
-#  if [ -s ${exp_src_file} ]; then   # Source code in experiment work directory
-#      echo Found ${exp_src_file}
-#      cp ${exp_src_file} ${outdir}/.
-#  else
-#      echo "FATAL: No cloud_detect_setup.F90 file found."
-#      exit
-#  fi
-
-  # Namelist variables will be read, if possible, from file
-  # IASI_CLDDET.NL (or CRIS_CLDDET.NL). Again, search first from the
-  # experiment's work directory.
-
-  # exp_namelist_file=${srcdir}/${nmlfile}
-
-#  if [ -s ${exp_namelist_file} ]; then   # Namelist file in experiment directory
-#    echo Found ${exp_namelist_file}
-#    cp ${exp_namelist_file} ${outdir}/.
-#  else
-#    echo "Warning: Found no cloud detection namelist file "${nmlfile}
-#    exit
-#  fi
-
 
 cd ${outdir}
 
@@ -252,13 +214,9 @@ cd ${outdir}
       exit
   fi
 
-fi # if [ ${FETCH_INPUT} -eq 1 ]; ...
-
 #---
 # 2 Running the FORTRAN code
 #
-
-if [ ${RUN_FORTRAN} -eq 1 ]; then
 
   echo
   echo Running the FORTRAN code ...
@@ -271,7 +229,6 @@ if [ ${RUN_FORTRAN} -eq 1 ]; then
   cd ${workdir}
   ln -sf ${outdir}/clddet_sorted_smoothed.dat .
 
-fi # if [ ${RUN_FORTRAN} ]; then
 
 echo
 echo "Output available in clddet_sorted_smoothed.dat"
@@ -281,8 +238,6 @@ echo
 # Cleaning
 #
 
-if [ ${CLEAN} -eq 1 ]; then
-
   echo
   echo Cleaning ...
   echo
@@ -291,14 +246,10 @@ if [ ${CLEAN} -eq 1 ]; then
   cd ${outdir}
   rm -f clddet_analyzer.x
   rm -f HM_Date.html
-  rm -f IASI_CLDDET.NL
-  rm -f cloud_detect_setup.F90
   rm -f clddet_ascii.dat
 
   echo ... done.
   echo
-
-fi # if [ ${CLEAN} -eq 1 ]; then
 
 
 echo
