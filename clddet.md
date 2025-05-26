@@ -41,7 +41,7 @@ The tool comprises two scripts:
 
 and another code files (in src):
 
-- **clddet_analyzer.f90** 
+- **clddet_analyzer.F90** 
 
 
 ## Usage

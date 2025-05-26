@@ -1,9 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-#set -xe
-#set -e
-
-#Original::
 
 PROGNAME=`basename $0`
 
@@ -176,8 +172,8 @@ fi
 
 
 #---
-# 2 Fetch input files: relevant source code, namelist file, HM_Date
-#   log file, odb files (ECMA.*).
+# 2 Fetch input files: relevant source code (~/src/clddet_analyzer.F90),
+#   HM_Date log file and odb file from ECMA (clddet_ascii.dat.*).
 #
 
   echo
@@ -223,7 +219,7 @@ cd ${outdir}
   echo
 
   cd ${outdir}
-  gfortran -o clddet_analyzer.x ${srcdir}/clddet_analyzer.f90
+  gfortran -o clddet_analyzer.x ${srcdir}/clddet_analyzer.F90
   ./clddet_analyzer.x ${capital} ${width} ${thres}
 
   cd ${workdir}
@@ -256,4 +252,3 @@ echo
 echo "Finished at"
 date
 echo
-
